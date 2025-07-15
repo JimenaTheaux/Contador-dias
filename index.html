@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contador regresivo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Uni+Neue:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      background-color: #597654;
+      font-family: 'Uni Neue', sans-serif;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      height: 100vh;
+      box-sizing: border-box;
+    }
+    .contador-wrapper {
+      text-align: center;
+    }
+    .contador-wrapper h2 {
+      font-size: 2em;
+      margin-bottom: 25px;
+    }
+    .contador-boxes {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .contador-unidad {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .numero {
+      font-size: 3.5em;
+      font-weight: 700;
+      padding: 10px 20px;
+      border: 2px solid white;
+      border-radius: 8px;
+      min-width: 80px;
+    }
+    .label {
+      margin-top: 8px;
+      font-size: 1em;
+    }
+  </style>
+</head>
+<body>
+  <div class="contador-wrapper">
+    <h2>Faltan...</h2>
+    <div class="contador-boxes">
+      <div class="contador-unidad">
+        <div class="numero" id="days">0</div>
+        <div class="label">días</div>
+      </div>
+      <div class="contador-unidad">
+        <div class="numero" id="hours">0</div>
+        <div class="label">horas</div>
+      </div>
+      <div class="contador-unidad">
+        <div class="numero" id="minutes">0</div>
+        <div class="label">minutos</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function updateCountdown() {
+      const countDownDate = new Date("December 13, 2025 20:00:00").getTime();
+      const now = new Date().getTime();
+      const distance = countDownDate - now;
+
+      if (distance < 0) {
+        document.querySelector(".contador-boxes").innerHTML = "<div style='font-size: 2em;'>¡Ya comenzó!</div>";
+        clearInterval(timer);
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+      document.getElementById("days").innerText = days;
+      document.getElementById("hours").innerText = hours;
+      document.getElementById("minutes").innerText = minutes;
+    }
+
+    updateCountdown();
+    const timer = setInterval(updateCountdown, 60000);
+  </script>
+</body>
+</html>
