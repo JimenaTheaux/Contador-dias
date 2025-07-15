@@ -14,21 +14,26 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 20px;
+      padding: 10px;
       height: 100vh;
       box-sizing: border-box;
       text-align: center;
     }
 
+    .contador-wrapper {
+      max-width: 300px;
+      width: 100%;
+    }
+
     .contador-wrapper h2 {
-      font-size: 1.8em;
-      margin-bottom: 20px;
+      font-size: 1.2em;
+      margin-bottom: 15px;
     }
 
     .contador-boxes {
       display: flex;
       justify-content: center;
-      gap: 12px;
+      gap: 6px;
       flex-wrap: wrap;
     }
 
@@ -39,33 +44,33 @@
     }
 
     .numero {
-      font-size: 2.5em;
+      font-size: 1.8em;
       font-weight: 700;
-      padding: 10px 16px;
+      padding: 6px 10px;
       border: 2px solid white;
-      border-radius: 8px;
-      min-width: 60px;
+      border-radius: 6px;
+      min-width: 45px;
     }
 
     .label {
-      margin-top: 6px;
-      font-size: 0.9em;
+      margin-top: 4px;
+      font-size: 0.75em;
     }
 
-    /* RESPONSIVE PARA CELULARES */
-    @media (max-width: 480px) {
+    /* Ajuste para vistas aún más pequeñas */
+    @media (max-width: 360px) {
       .numero {
-        font-size: 2em;
-        padding: 8px 12px;
-        min-width: 50px;
+        font-size: 1.4em;
+        padding: 4px 8px;
+        min-width: 40px;
       }
 
       .contador-wrapper h2 {
-        font-size: 1.5em;
+        font-size: 1em;
       }
 
       .label {
-        font-size: 0.8em;
+        font-size: 0.7em;
       }
     }
   </style>
@@ -96,7 +101,7 @@
       const distance = countDownDate - now;
 
       if (distance < 0) {
-        document.querySelector(".contador-boxes").innerHTML = "<div style='font-size: 2em;'>¡Ya comenzó!</div>";
+        document.querySelector(".contador-boxes").innerHTML = "<div style='font-size: 1.2em;'>¡Ya comenzó!</div>";
         clearInterval(timer);
         return;
       }
